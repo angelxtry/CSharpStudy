@@ -105,5 +105,52 @@ namespace DateTimeTest
             Assert.AreEqual(dt2.Date, new DateTime(2018, 12, 25));
             // 날짜만 비교해야 할 때 어렵게 처리하지 말자.
         }
+
+        [TestMethod]
+        public void TestDateTimeCaculate()
+        {
+            var xmas = new DateTime(2018, 12, 25);
+            var eve = xmas.AddDays(-1);
+            Assert.AreEqual(eve, new DateTime(2018, 12, 24));
+
+            var oneYearAgo = xmas.AddYears(-1);
+            Assert.AreEqual(oneYearAgo, new DateTime(2017, 12, 25));
+
+            var oneYoneMoneDAgo = xmas.AddYears(-1).AddMonths(-1).AddDays(-1);
+            Assert.AreEqual(oneYoneMoneDAgo, new DateTime(2017, 11, 24));
+        }
+
+        [TestMethod]
+        public void TestDateTimeDiff()
+        {
+            var dt1 = new DateTime(2018, 12, 25);
+            var dt2 = new DateTime(2017, 12, 25);
+            TimeSpan diff = dt1 - dt2;
+            Assert.AreEqual(diff.Days, 365);
+            Assert.AreEqual(diff.TotalHours, 365*24);
+        }
+
+        [TestMethod]
+        public void TestDateTimeEndOfMonth()
+        {
+            var leapMonth = new DateTime(2016, 2, 1);
+            int days = DateTime.DaysInMonth(leapMonth.Year, leapMonth.Month);
+            var endOfMonth = new DateTime(leapMonth.Year, leapMonth.Month, days);
+            Assert.AreEqual(endOfMonth, new DateTime(2016, 2, 29));
+        }
+
+        [TestMethod]
+        public void TestDateTimeDayOfYear()
+        {
+            // 2018년의 몇 번째 날인가?
+            var dt1 = new DateTime(2018, 2, 1);
+            int dayOfYear = dt1.DayOfYear;
+            Assert.AreEqual(dayOfYear, 32);
+        }
+
+        [TestMethod]
+        public void TestNextDayOfTheWeek()
+        {
+        }
     }
 }

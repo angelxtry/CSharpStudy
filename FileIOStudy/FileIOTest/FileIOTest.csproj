@@ -49,6 +49,7 @@
     <Compile Include="TestDirectoryAction.cs" />
     <Compile Include="TestFileCreate.cs" />
     <Compile Include="TestFileAction.cs" />
+    <Compile Include="TestPath.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FileIOStudy\FileIOStudy.csproj">

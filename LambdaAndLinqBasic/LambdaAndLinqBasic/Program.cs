@@ -9,38 +9,9 @@ namespace LambdaAndLinqBasic
     {
         static void Main(string[] args)
         {
-            Lookup();
+            ToLookupSample1.Lookup();
+            ToLookupSample2.GroupingPackages();
             Console.ReadLine();
-        }
-
-        private static void Lookup()
-        {
-            var cities = GetListData();
-            var lookup = cities.ToLookup(city => city.Length)
-                               .OrderBy(city => city.Key);
-            foreach (var group in lookup)
-            {
-                Console.WriteLine("Key: " + group.Key);
-                foreach (var city in group)
-                {
-                    Console.WriteLine(city);
-                }
-            }
-        }
-
-        public static IEnumerable<string> GetListData()
-        {
-            return new List<string>
-            {
-                "Seoul",
-                "New Delhi",
-                "Bangkok",
-                "London",
-                "Paris",
-                "Berlin",
-                "Canberra",
-                "Hong Kong",
-            };
         }
     }
 }
